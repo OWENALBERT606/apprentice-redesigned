@@ -20,7 +20,7 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Button } from "../ui/button";
-export default function ForgotPasswordForm() {
+export default function ForgotPasswordForm({banners}:{banners:any}) {
   const [loading, setLoading] = useState(false);
   const {
     handleSubmit,
@@ -171,7 +171,7 @@ export default function ForgotPasswordForm() {
         </div>
       </div>
       <div className="hidden bg-muted lg:block relative">
-        <CustomCarousel />
+        <CustomCarousel banners={banners} />
       </div>
     </div>
   );
