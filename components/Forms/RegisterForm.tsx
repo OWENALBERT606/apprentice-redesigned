@@ -15,7 +15,7 @@ import { Button } from "../ui/button";
 import { signIn } from "next-auth/react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Logo from "../global/Logo";
-export default function RegisterForm() {
+export default function RegisterForm({banners}:{banners:any}) {
   const [loading, setLoading] = useState(false);
   const [emailErr, setEmailErr] = useState<string | null>(null);
   const {
@@ -59,7 +59,7 @@ export default function RegisterForm() {
           <div className="grid gap-2 text-center mt-10 md:mt-0">
             <h1 className="text-3xl font-bold">Create an account</h1>
             <p className="text-muted-foreground text-sm">
-              Create your <span className="text-blue-600">Next Admin</span>{" "}
+              Create your <span className="text-blue-600"></span>{" "}
               Account today to get started
             </p>
           </div>
@@ -131,30 +131,7 @@ export default function RegisterForm() {
                 />
               </div>
             </form>
-            <div className="flex items-center py-4 justify-center space-x-1 text-slate-900">
-              <div className="h-[1px] w-full bg-slate-200"></div>
-              <div className="uppercase">Or</div>
-              <div className="h-[1px] w-full bg-slate-200"></div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <Button
-                onClick={() => signIn("google")}
-                variant={"outline"}
-                className="w-full"
-              >
-                <FaGoogle className="mr-2 w-6 h-6 text-red-500" />
-                Login with Google
-              </Button>
-              <Button
-                onClick={() => signIn("github")}
-                variant={"outline"}
-                className="w-full"
-              >
-                <FaGithub className="mr-2 w-6 h-6 text-slate-900 dark:text-white" />
-                Login with Github
-              </Button>
-            </div>
+           
             <p className="mt-6 text-sm text-gray-500">
               Already Registered ?{" "}
               <Link
@@ -168,7 +145,7 @@ export default function RegisterForm() {
         </div>
       </div>
       <div className="hidden bg-muted lg:block relative">
-        <CustomCarousel />
+        <CustomCarousel banners={banners} />
       </div>
     </div>
   );

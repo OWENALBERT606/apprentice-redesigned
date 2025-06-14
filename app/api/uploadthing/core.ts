@@ -6,16 +6,16 @@ const f = createUploadthing();
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
   // Define as many FileRoutes as you like, each with a unique routeSlug
-  categoryImage: f({ image: { maxFileSize: "1MB" } }).onUploadComplete(
+  bannerImage: f({ image: { maxFileSize: "1MB" } }).onUploadComplete(
     async ({ metadata, file }) => {
       console.log("file url", file.url);
-      return { uploadedBy: "JB" };
+      return { uploadedBy: "ADMIN" };
     }
   ),
   blogImage: f({ image: { maxFileSize: "1MB" } }).onUploadComplete(
     async ({ metadata, file }) => {
       console.log("file url", file.url);
-      return { uploadedBy: "JB" };
+      return { uploadedBy: "ADMIN" };
     }
   ),
   fileUploads: f({
@@ -41,7 +41,7 @@ export const ourFileRouter = {
     "application/zip": { maxFileSize: "1MB", maxFileCount: 4 },
   }).onUploadComplete(async ({ metadata, file }) => {
     console.log("file url", file.url);
-    return { uploadedBy: "JB" };
+    return { uploadedBy: "ADMIN" };
   }),
   mailAttachments: f({
     image: { maxFileSize: "1MB", maxFileCount: 4 },
@@ -66,7 +66,7 @@ export const ourFileRouter = {
     "application/zip": { maxFileSize: "1MB", maxFileCount: 4 },
   }).onUploadComplete(async ({ metadata, file }) => {
     console.log("file url", file.url);
-    return { uploadedBy: "JB" };
+    return { uploadedBy: "ADMIN" };
   }),
 } satisfies FileRouter;
 

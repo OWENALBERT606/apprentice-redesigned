@@ -29,6 +29,15 @@ import {
   Database,
   BarChart,
   Lock,
+  GraduationCap,
+  Home,
+  HeartHandshake,
+  Landmark,
+  Calendar,
+  HandCoins,
+  Activity,
+  ShieldCheck,
+  MessageCircle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
@@ -38,69 +47,66 @@ import { Session } from "next-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { getInitials } from "@/lib/generateInitials";
 
-const features = [
+const pages = [
   {
-    icon: Users,
-    title: "Advanced Authentication",
-    description:
-      "Secure and flexible authentication system with role-based access control and multi-provider support.",
-    href: "/features/authentication",
+    icon: Home,
+    title: "Home",
+    description: "Welcome to our non-profit organization’s official website.",
+    href: "/",
   },
   {
-    icon: Layout,
-    title: "Dynamic Dashboard",
-    description:
-      "Beautifully designed, responsive dashboard with data visualization and management tools.",
-    href: "/features/dashboard",
+    icon: HeartHandshake,
+    title: "About Us",
+    description: "Learn who we are, our values, mission, and the work we do.",
+    href: "/about",
+  },
+  {
+    icon: Landmark,
+    title: "Our Work",
+    description: "Explore our projects, programs, and impact on the community.",
+    href: "/our-work",
+  },
+  {
+    icon: Users,
+    title: "Our Team",
+    description: "Meet the passionate individuals behind our organization.",
+    href: "/team",
+  },
+  {
+    icon: Calendar,
+    title: "Events",
+    description: "Check out our upcoming events, campaigns, and community outreach.",
+    href: "/events",
+  },
+  {
+    icon: HandCoins,
+    title: "Donate",
+    description: "Support our mission with a one-time or recurring donation.",
+    href: "/donate",
+  },
+  {
+    icon: Activity,
+    title: "Volunteer",
+    description: "Join our volunteer network and contribute your time and skills.",
+    href: "/volunteer",
   },
   {
     icon: FileText,
-    title: "Reusable Form Components",
-    description:
-      "Streamline your workflows with reusable and customizable form components.",
-    href: "/features/forms",
+    title: "Reports",
+    description: "Access financial reports, annual reports, and impact statements.",
+    href: "/reports",
   },
   {
-    icon: BarChart2,
-    title: "Advanced Data Tables",
-    description:
-      "Manage and display data effortlessly with customizable and powerful data tables.",
-    href: "/features/data-tables",
+    icon: ShieldCheck,
+    title: "Partners",
+    description: "See the organizations and sponsors we collaborate with.",
+    href: "/partners",
   },
   {
-    icon: CloudUpload,
-    title: "Image Upload",
-    description:
-      "Effortless image uploads powered by UploadThing, supporting both single and multiple file uploads.",
-    href: "/features/image-upload",
-  },
-  {
-    icon: Edit3,
-    title: "Rich Text Editor",
-    description:
-      "Seamlessly create and edit rich content using an integrated Quill editor.",
-    href: "/features/rich-text-editor",
-  },
-  {
-    icon: Lock,
-    title: "Secure Authentication",
-    description:
-      "Role-based authentication system with customizable access control.",
-    href: "/features/secure-authentication",
-  },
-  {
-    icon: Database,
-    title: "Prisma ORM",
-    description:
-      "Leverage Prisma ORM for robust and scalable database management in TypeScript.",
-    href: "/features/prisma-orm",
-  },
-  {
-    icon: BarChart,
-    title: "Analytics Integration",
-    description:
-      "Track performance with integrated analytics from PostHog and Vercel for actionable insights.",
-    href: "/features/analytics",
+    icon: MessageCircle,
+    title: "Contact",
+    description: "Get in touch with us for inquiries, support, or collaborations.",
+    href: "/contact",
   },
 ];
 
@@ -109,7 +115,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
   const [showFeatures, setShowFeatures] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 ">
+    <header className="sticky top-0 z-50 w-full border-b bg-white backdrop-blur supports-[backdrop-filter]:bg-white ">
       <div className="container max-w-7xl mx-auto flex h-14 items-center justify-between">
         <div className="flex items-center space-x-4">
           <Logo />
@@ -124,7 +130,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Features</NavigationMenuTrigger>
+                <NavigationMenuTrigger>Pages</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="w-[800px] p-4">
                     <div className="flex items-center justify-between mb-4 pb-2 border-b">
@@ -137,7 +143,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
                       </Link>
                     </div>
                     <div className="grid gap-4 md:grid-cols-3 ">
-                      {features.map((feature, index) => (
+                      {pages.map((feature, index) => (
                         <Link
                           key={index}
                           href={`/feature/${feature.title
@@ -161,33 +167,21 @@ export default function SiteHeader({ session }: { session: Session | null }) {
                         </Link>
                       ))}
                     </div>
-                    <div className="mt-6 pt-4 border-t">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h4 className="font-medium mb-1">Get started</h4>
-                          <p className="text-sm text-muted-foreground">
-                            Am really excited for all these features out of the
-                            box
-                          </p>
-                        </div>
-                        <Button asChild variant="secondary">
-                          <Link
-                            target="_blank"
-                            href="https://coding-school-typescript.vercel.app/give-away"
-                          >
-                            Get started
-                          </Link>
-                        </Button>
-                      </div>
-                    </div>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/#pricing" legacyBehavior passHref>
+                <Link href="/campaigns" legacyBehavior passHref>
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                    Campaigns
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/events" legacyBehavior passHref>
                   <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
-                    Pricing
+                    Events
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -195,7 +189,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
               <NavigationMenuItem>
                 <Link href="/how-it-works" legacyBehavior passHref>
                   <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
-                    How it Works
+                    Stories
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -260,7 +254,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
               </button>
               {showFeatures && (
                 <div className="px-4 py-2 space-y-4">
-                  {features.map((feature, index) => (
+                  {pages.map((feature, index) => (
                     <Link
                       key={index}
                       href={`/feature/${feature.title

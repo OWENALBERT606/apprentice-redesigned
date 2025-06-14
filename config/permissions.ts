@@ -45,13 +45,23 @@ export const permissions: ModulePermissions[] = [
     },
   },
   {
-    display: "Sales",
-    name: "sales",
+    display: "Banners",
+    name: "banners",
     permissions: {
-      create: "sales.create",
-      read: "sales.read",
-      update: "sales.update",
-      delete: "sales.delete",
+      create: "banners.create",
+      read: "banners.read",
+      update: "banners.update",
+      delete: "banners.delete",
+    },
+  },
+  {
+    display: "",
+    name: "customers",
+    permissions: {
+      create: "customers.create",
+      read: "customers.read",
+      update: "customers.update",
+      delete: "customers.delete",
     },
   },
   {

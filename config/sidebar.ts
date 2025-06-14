@@ -7,6 +7,7 @@ import {
   Cable,
   CircleDollarSign,
   FolderTree,
+  Globe,
   Home,
   LucideIcon,
   Presentation,
@@ -64,6 +65,25 @@ export const sidebarLinks: ISidebarLink[] = [
         href: "/dashboard/profile",
         permission: "roles.read",
       },
+    ],
+  },
+  {
+    title: "Main",
+    icon: Globe,
+    dropdown: true,
+    href: "/dashboard/banners",
+    permission: "banners.read",
+    dropdownMenu: [
+      {
+        title: "Banners",
+        href: "/dashboard/banners",
+        permission: "banners.read",
+      },
+      // {
+      //   title: "Products",
+      //   href: "/dashboard/inventory/products",
+      //   permission: "products.read",
+      // },
     ],
   },
   {

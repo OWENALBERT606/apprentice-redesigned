@@ -1,3 +1,4 @@
+import { getAllBanners } from "@/actions/banners";
 import LoginForm from "@/components/Forms/LoginForm";
 import { GridBackground } from "@/components/reusable-ui/grid-background";
 import { authOptions } from "@/config/auth";
@@ -6,6 +7,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 export default async function page() {
+   const banners = (await getAllBanners()) || [];
   const session = await getServerSession(authOptions);
   if (session) {
     redirect("/dashboard");
@@ -13,7 +15,7 @@ export default async function page() {
   return (
     <GridBackground>
       <div className="px-4">
-        <LoginForm />
+        <LoginForm banners={banners} />
       </div>
     </GridBackground>
   );
