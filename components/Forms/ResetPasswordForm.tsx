@@ -20,7 +20,7 @@ export type ResetProps = {
   cPassword: string;
   password: string;
 };
-export default function ResetPasswordForm() {
+export default function ResetPasswordForm({banners}:{banners:any}) {
   const [loading, setLoading] = useState(false);
   const {
     handleSubmit,
@@ -114,7 +114,7 @@ export default function ResetPasswordForm() {
         </div>
       </div>
       <div className="hidden bg-muted lg:block relative">
-        <CustomCarousel />
+        <CustomCarousel banners={banners} />
       </div>
     </div>
   );
