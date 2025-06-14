@@ -1,4 +1,4 @@
-"use client";
+
 
 import { getAllBanners } from "@/actions/banners";
 import RegisterForm from "@/components/Forms/RegisterForm";
