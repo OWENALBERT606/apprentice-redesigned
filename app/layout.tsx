@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
 import { Rethink_Sans } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "react-hot-toast";
-import Providers from "@/components/Providers";
 import { siteConfig } from "@/config/site";
-// import FooterBanner from "@/components/Footer";
 const inter = Rethink_Sans({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.title,
-    template: `%s - ${siteConfig.title}`,
-  },
+  title: "APPRENTICE - Under Maintenance",
   metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
   keywords: [
@@ -103,7 +97,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        {children}
       </body>
     </html>
   );
